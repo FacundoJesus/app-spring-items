@@ -13,7 +13,7 @@ function App() {
     // Obtener todos los items.
     const fetchItems = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/items');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/items`);
             const data = await response.json();
             setItems(data);
         } catch(error) {
@@ -27,7 +27,7 @@ function App() {
         
         if(!name) return;
         const item = {name};
-        const response = await fetch(`http://localhost:8080/api/items`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/items`, {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
